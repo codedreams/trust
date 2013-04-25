@@ -59,4 +59,13 @@
                                       (escape-fn v))]]
                         [k v])))
 
+(defn html-escape
+  "Escape function using html as default escape.
+   Takes a map and gives the option to skip or use another
+   escape function"
+  [m & [opts]]
+  (escape-it escape-html m opts))
+
+
+
 

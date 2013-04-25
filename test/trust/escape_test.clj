@@ -39,4 +39,7 @@
         (:role result) =>
         "<h1>user</h1>"))
 
+(fact "Should return html escaped values by default - html-escape"
+      (:name-json (html-escape session)) =>
+      "&lt;script&gt;more&amp;bad&lt;&#2F;script&gt;")
 
