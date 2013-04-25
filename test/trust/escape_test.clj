@@ -13,7 +13,11 @@
 
 (fact "Should return html character entities - escape-html"
       (escape-html (:name session)) =>
-      "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#2F;script&gt;")
+      "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#x2F;script&gt;")
+
+(fact "Should not double escape when ran twice -escape-html"
+      (escape-html (escape-html (:name session))) =>
+      "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#x2F;script&gt;")
 
 (fact "Should return special characters - unescape-html"
       (unescape-html (escape-html (:name session))) =>
@@ -33,7 +37,7 @@
         (:address result) =>
         "&lt;IMG SRC=&quot;javascript:alert(&quot;XSS&quot;);&quot;&gt;"
         (:name result) =>
-        "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#2F;script&gt;"
+        "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#x2F;script&gt;"
         (:name-json result) =>
         "\\u003Cscript\\u003Emore\\u0026bad\\u003C/script\\u003E"
         (:role result) =>
@@ -41,5 +45,6 @@
 
 (fact "Should return html escaped values by default - html-escape"
       (:name-json (html-escape session)) =>
-      "&lt;script&gt;more&amp;bad&lt;&#2F;script&gt;")
+      "&lt;script&gt;more&amp;bad&lt;&#x2F;script&gt;")
+
 

@@ -1,17 +1,17 @@
 (ns trust.escape)
 
-
-;;; May change to use regex to avoid double escaping.
 (defn escape-html
   "change special character into html character entitites"
   [text]
   (-> (str text)
-      (.replace "&" "&amp;")
+      (clojure.string/replace
+       #"&(?!(amp;|lt;|gt;|quot;|#x27;|#x2F;))" "&amp;")
+      ;(.replace "&" "&amp;")
       (.replace "<" "&lt;")
       (.replace ">" "&gt;")
       (.replace "\"" "&quot;")
       (.replace "'" "&#x27;")
-      (.replace "/" "&#2F;")))
+      (.replace "/" "&#x2F;")))
 
 (defn unescape-html
   "change html character entities into special characters"
@@ -22,7 +22,7 @@
       (.replace "&gt;" ">")
       (.replace "&quot;" "\"")
       (.replace "&#x27;" "'")
-      (.replace "&#2F;" "/")))
+      (.replace "&#x2F;" "/")))
 
 (defn escape-json
   "change special character into js character entities"
