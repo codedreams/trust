@@ -1,5 +1,7 @@
 (ns trust.escape)
 
+
+;;; May change to use regex to avoid double escaping.
 (defn escape-html
   "change special character into html character entitites"
   [text]
@@ -45,8 +47,8 @@
 
    e.g. (escape-it escape-html {:name \"<script>bad-stuff</script>\"}) 
    e.g. (escape-it escape-html {:name \"<script>bad-stuff</script>\"
-                                :__anti-forgery-token \"some-token\"}
-                               {:__anti-forgery-token identity})
+                                :id \"some-token\"}
+                               {:id identity})
 
    In the example above the identity function will just produce the actual value
    instead of escaping. You can have any escape-function you want to perform on
