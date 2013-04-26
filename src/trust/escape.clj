@@ -68,6 +68,12 @@
   [m & [opts]]
   (escape-it escape-html m opts))
 
+(defn json-escape
+  "Escape function using json as default escape.
+   Takes a map and gives the option to skip or use another
+   escape function"
+  [m & [opts]]
+  (escape-it escape-json m opts))
 
 
 

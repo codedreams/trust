@@ -47,4 +47,7 @@
       (:name-json (html-escape session)) =>
       "&lt;script&gt;more&amp;bad&lt;&#x2F;script&gt;")
 
+(fact "Should return json escaped values by default - json-escape"
+      (:name (json-escape session)) =>
+      "\\u003Cscript\\u003E'bad\\u0026stuff\\u003C/script\\u003E")
 
