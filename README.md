@@ -46,10 +46,7 @@ It is used to provide custom functions or to skip values all together.
 escape-it
 ``` 
 takes a custom escape function and the same
-optional arguments as 
-```clojure 
-html-escape
-```
+optional arguments as ***html-escape***
 
 ```clojure 
 (escape-it escape-json joe {:role escape-html})
@@ -79,7 +76,7 @@ Defining a user map named joe, and a html template named stats
    [:p [:strong (:address m)]]])
 ```
 
-Now use the ```clojure xss``` function to escape the arguments
+Now use the ***xss*** function to escape the arguments
 
 ```clojure 
 (xss stats joe) 
@@ -87,10 +84,10 @@ Now use the ```clojure xss``` function to escape the arguments
 
 ```html
 => <div>
-   <p><strong>Joe</strong></p>
-   <p><strong>Male</strong></p>
-   <p><strong>&lt;script&gt;bad-stuff&lt;&#x2F;script&gt;</strong></p>
-</div>
+	<p><strong>Joe</strong></p>
+   	<p><strong>Male</strong></p>
+   	<p><strong>&lt;script&gt;bad-stuff&lt;&#x2F;script&gt;</strong></p>
+   </div>
 ```
 
 After the template function **xss** and **xss-json** can be used with vectors, strings, maps, or sets.
@@ -101,7 +98,7 @@ After the template function **xss** and **xss-json** can be used with vectors, s
 Some templating solutions in the clojure community require you to
 manually escape output.  I think manually escaping each value can lead 
 to costly mistakes.  My solution, while not automatic, provides a
-less error prone way of enjoying a safer application.
+less error prone way of providing a safer application.
 
 
 ## License
