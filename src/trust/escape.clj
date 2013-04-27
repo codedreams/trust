@@ -75,5 +75,22 @@
   [m & [opts]]
   (escape-it escape-json m opts))
 
+(defn escaper
+  "Used to determine value and correct operation"
+  [v escape-fn]
+  (cond
+   (vector? v) (mapv escape-fn v)
+   (set? v) (set (map escape-fn v))
+   (map? v) (escape-it escape-fn v)
+   :else (escape-fn v)))
 
+(defn xss
+  "Used to escape HTML arguments before applying to function"
+  [fn & args]
+  (apply fn (map #(escaper % escape-html) args)))
+
+(defn xss-json
+  "Used to escape JSON arguments before applying to function"
+  [fn & args]
+  (apply fn (map #(escaper % escape-json) args)))
 
