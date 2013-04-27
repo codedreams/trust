@@ -2,6 +2,13 @@
 
 Trust is an escaping library meant for usage against xss
 
+Install
+-------
+
+Add the following dependency to your `project.clj` file:
+
+    [trust "1.0.0-beta"]
+
 ## Usage
 
 The most basic usage of Trust is escaping strings - via
