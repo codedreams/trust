@@ -93,6 +93,8 @@ Now use the ```clojure xss``` function to escape the arguments
 </div>
 ```
 
+After the template function **xss** and **xss-json** can be used with vectors, strings, maps, or sets.
+
 
 ## Why?
 
@@ -106,7 +108,7 @@ less error prone way of enjoying a safer application.
 
 Copyright © 2013 
 
-Distributed under the Eclipse Public License, the same as Clojure.
+Distributed under the Eclipse Public License, the same as Clojure.# Trust
 
 
 
