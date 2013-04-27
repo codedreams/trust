@@ -37,12 +37,15 @@ Let's say you just pulled the joe map (shown above) from the database. You can e
 The map 
 ```clojure 
 {:role identity :name escape-json}
-``` is optional.
+``` 
+is optional.
 It is used to provide custom functions or to skip values all together.
+
 
 ```clojure 
 escape-it
-``` takes a custom escape function and the same
+``` 
+takes a custom escape function and the same
 optional arguments as 
 ```clojure 
 html-escape
@@ -58,7 +61,7 @@ html-escape
     :name "\\u003Ci\\u003EJoe\\u003C/i\\u003E"}
 ```
 
-The second primary way of escaping data is performed closer to the template
+The second way of escaping data is performed closer to the template
 level.  Trust currently provides two functions for use at the template level
 - **xss** and **xss-json** 
 
@@ -96,14 +99,14 @@ Now use the ```clojure xss``` function to escape the arguments
 Some templating solutions in the clojure community require you to
 manually escape output.  I think manually escaping each value can lead 
 to costly mistakes.  My solution, while not automatic, provides a
-less error prone way of enjoying a safe application.
+less error prone way of enjoying a safer application.
 
 
 ## License
 
 Copyright © 2013 
 
-Distributed under the Eclipse Public License, the same as Clojure.# Trust
+Distributed under the Eclipse Public License, the same as Clojure.
 
 
 
