@@ -10,7 +10,6 @@
    :address "<IMG SRC=\"javascript:alert(\"XSS\");\">"
    :role "<h1>user</h1>"})
 
-
 (fact "Should return html character entities - escape-html"
       (escape-html (:name session)) =>
       "&lt;script&gt;&#x27;bad&amp;stuff&lt;&#x2F;script&gt;")

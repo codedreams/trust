@@ -1,4 +1,4 @@
-(defproject trust "1.0.0"
+(defproject trust "1.0.0-beta"
   :description "xss escaping library"
   :url "https://github.com/codedreams/trust"
   :license {:name "Eclipse Public License"

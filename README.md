@@ -1,6 +1,6 @@
 # Trust
 
-Trust is a escaping library meant for usage against xss
+Trust is an escaping library meant for usage against xss
 
 ## Usage
 
