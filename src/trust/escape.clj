@@ -41,6 +41,8 @@
       (.replace "\\u003C" "<")))
 
 
+(declare escaper)
+
 (defn escape-it 
   "Takes a default escape function, a map to escape, and gives the option to
    skip or use another escape function in a map.
@@ -56,9 +58,9 @@
   
   [escape-fn m & [opts]]
       (reduce conj {} (for [[k v] m
-                            :let [v (if (k opts)
-                                      ((k opts) v)
-                                      (escape-fn v))]]
+                            :let [v (if (coll? v)
+                                      (escaper v (or (k opts) escape-fn) opts)
+                                      ((or (k opts) escape-fn) v))]]
                         [k v])))
 
 (defn html-escape
@@ -77,11 +79,11 @@
 
 (defn escaper
   "Used to determine value and correct operation"
-  [v escape-fn]
+  [v escape-fn & [opts]]
   (cond
    (vector? v) (mapv escape-fn v)
    (set? v) (set (map escape-fn v))
-   (map? v) (escape-it escape-fn v)
+   (map? v) (escape-it escape-fn v opts)
    :else (escape-fn v)))
 
 (defn xss

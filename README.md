@@ -7,7 +7,7 @@ Install
 
 Add the following dependency to your `project.clj` file:
 
-    [trust "1.0.0-beta"]
+    [trust "1.1.0-beta"]
 
 ## Usage
 
