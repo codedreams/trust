@@ -17,7 +17,11 @@ The most basic usage of Trust is escaping strings - via
 ```clojure
 (def joe {:role "<h1>System-generated<h1>"
           :name "<i>Joe</i>"
-          :address "<script>bad-stuff</script>"})                  
+          :address "<script>bad-stuff</script>"
+          :friends ["<" ">"]
+          :contacts #{">" "<"}
+          :best-friends {:jim {:friends [">" "<"]}
+                         :jane {:contacts #{">" "<"}}}})                  
 ```
 
 ```clojure
@@ -32,13 +36,17 @@ Let's say you just pulled the joe map (shown above) from the database. You can e
 
 
 ```clojure
-(html-escape joe {:role identity :name escape-json})
+(html-escape joe {:role identity :friends escape-json})
 ```
 
 ```clojure
-=> {:address "&lt;script&gt;bad-stuff&lt;&#x2F;script&gt;", 
-    :role "<h1>System-generated<h1>", 
-    :name "\\u003Ci\\u003EJoe\\u003C/i\\u003E"}
+=> {:address "&lt;script&gt;bad-stuff&lt;&#x2F;script&gt;" 
+    :role "<h1>System-generated<h1>" 
+    :contacts #{"&gt;" "&lt;"} 
+    :name "&lt;i&gt;Joe&lt;&#x2F;i&gt;" 
+    :friends ["\\u003C" "\\u003E"] 
+    :best-friends {:jim {:friends ["\\u003E" "\\u003C"]} 
+                   :jane {:contacts #{"&gt;" "&lt;"}}}}
 ```
 
 The map 
